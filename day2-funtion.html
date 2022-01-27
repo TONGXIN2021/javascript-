@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数学习-回调函数</title>
+</head>
+
+<body>
+    <script>
+        /* function showMessage(name) {
+
+            return "你好，" + name;
+        }
+        //console.log(showMessage('小童'));
+        document.write(showMessage('小童')); */
+        let showMessage = function (name) {
+            document.write('你好, ' + name)
+        };
+
+        setTimeout(showMessage('小童'), 1000);
+
+
+        function temperatureBodyDetection(success, fail) {
+            let temperature = prompt('请输入你的体温:');
+            if (temperature >= 36 && temperature <= 38)
+                success(); /*执行成功函数*/
+            else
+                fail(); /*执行失败函数*/
+        }
+
+        var success = function () { alert('体温正常，打卡成功！'); }
+        var fail = function () { alert('体温异常，打卡失败！'); }
+
+        temperatureBodyDetection(success, fail) /**调用打卡函数**/
+    </script>
+</body>
+
+</html>
