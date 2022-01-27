@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>请输入文本:</label><input type="text" />
+    <button onclick="generateTypeEffect()">生成打字效果</button>
+    <h2 id="showText"></h2>
+
+    <script>
+
+
+        function generateTypeEffect() {
+            //这里实现打字机效果
+            let text = document.querySelector('input').value;
+            const data = text.split('');
+            let h2 = document.querySelector('h2');
+            let index = 0;
+            function writing() {
+                if (index < data.length) {
+                    // 追加文字
+                    h2.innerHTML += data[index++]
+                    // 没错，也可以通过，clearTimeout取消setInterval的执行
+                    // index === 4 && clearTimeout(timer)
+                } else {
+                    clearInterval(timer)
+                }
+                console.log(timer) // 这里会打印出 1 1 1 1 1 ...
+            }
+            // 使用 setInterval 时，结束后不要忘记进行 clearInterval
+            timer = setInterval(writing, 200)
+
+        }
+
+            //参考：https://segmentfault.com/a/1190000038915675
+
+    </script>
+</body>
+
+</html>
